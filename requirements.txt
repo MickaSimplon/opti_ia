@@ -1,6 +1,9 @@
-Flask
-torch
-torchvision
+Flask~=2.0.1
+torch~=1.9.0+cu111
+torchvision~=0.10.0
 numpy
-Pillow
+Pillow~=8.3.1
 gunicorn
+
+onnx~=1.9.0
+onnxruntime~=1.8.1
