@@ -20,3 +20,22 @@ def read_file(file):
 @app.route('/', methods=["GET", 'POST'])
 def home_page():
     return render_template('index.html')
+
+@app.route('/files', methods=['GET', 'POST'])
+def upload_folder():
+    if request.method == 'POST':
+        if 'files' not in request.files:
+            print("redirection - pas d'input folder")
+            return redirect('/')
+        files = request.files.getlist('files')
+        if files == '':
+            print('redirection - pas de filename dans folder')
+            return redirect('/')
+        result = []
+        for file in files:
+            class_name, class_id, filename = read_file(file)
+            if class_name == 404:
+                return redirect('/')
+            result.append({'class_name': class_name, 'class_id': class_id, 'filename': filename})
+        return render_template('result.html', data=result)
+    return redirect('/')
