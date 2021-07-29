@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Result{% endblock %}
+{% block h1 %}Prédiction(s){% endblock %}
+{% block content %}
+
+<form class="form-signin" method=post enctype=multipart/form-data>
+  <div class="row row-cols-6 align-items-center gy-4 mt-3">
+    {% if data %}
+    {% for item in data %}
+    <div class="col">
+      <div class="card">
+        <h5 class="card-title text-center">Detected XRay Class: {{ item["class_name"] }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted text-center">XRay Class ID: {{ item["class_id"] }}</h6>
+        <img class="card-img-top" src="static/uploads/{{item['filename']}}" alt="{{item['filename']}}">
+      </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+  </div>
+</form>
+
+{% endblock %}
