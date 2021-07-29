@@ -1,9 +1,5 @@
 import json
-
 from commons import get_model, transform_image
-from PIL import Image
-import torch
-import onnx
 import os
 import onnxruntime
 
