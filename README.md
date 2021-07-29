@@ -18,6 +18,7 @@ Run the server:
 ## Utilisation:
 
 Pour séléctionner plusieurs fichiers veuillez faire control(ctrl) + A
+
 Pour revenir à la page d'acceuille clické sur l'icon
 
 ## License
