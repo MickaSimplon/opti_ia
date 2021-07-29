@@ -16,3 +16,7 @@ def read_file(file):
     file.seek(0)
     file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     return class_name, class_id, filename
+
+@app.route('/', methods=["GET", 'POST'])
+def home_page():
+    return render_template('index.html')
