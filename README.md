@@ -15,6 +15,9 @@ Run the server:
 
     python app.py
 
+## Utilisation:
+
+Pour séléctionner plusieurs fichiers veuillez faire control(ctrl) + A
 
 ## License
 
