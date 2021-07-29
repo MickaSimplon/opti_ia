@@ -39,3 +39,9 @@ def upload_folder():
             result.append({'class_name': class_name, 'class_id': class_id, 'filename': filename})
         return render_template('result.html', data=result)
     return redirect('/')
+
+if __name__ == '__main__':
+    if os.path.isdir(UPLOAD_FOLDER):
+        shutil.rmtree(UPLOAD_FOLDER)
+    os.mkdir(UPLOAD_FOLDER)
+    app.run(debug=True, port=int(os.environ.get('PORT', 5000)))
