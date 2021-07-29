@@ -1,12 +1,11 @@
-
-import os
 import io
+import os
+import onnx
 import torchvision as tv
 from PIL import Image
-import onnx
 
 
-def get_model() :
+def get_model():
     # Preprocessing: load the ONNX model
     model_path = os.path.join('models', 'MedNet.onnx')
     model = onnx.load(model_path)
@@ -19,22 +18,24 @@ def get_model() :
         print('The model is valid!')
     return model
 
-def transform_image(image_bytes) : 
+
+def transform_image(image_bytes):
     img = Image.open(io.BytesIO(image_bytes))
     img_y = scaleImage(img)
     img_y.unsqueeze_(0)
     return img_y
 
+
 def format_class_name(class_name):
     class_name = class_name.title()
     return class_name
 
+
 # Pass a PIL image, return a tensor
-def scaleImage(x):          
+def scaleImage(x):
     toTensor = tv.transforms.ToTensor()
     y = toTensor(x)
-    if(y.min() < y.max()):  
-        y = (y - y.min())/(y.max() - y.min()) 
-    z = y - y.mean()        
+    if (y.min() < y.max()):
+        y = (y - y.min()) / (y.max() - y.min())
+    z = y - y.mean()
     return z
-

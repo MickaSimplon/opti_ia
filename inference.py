@@ -1,8 +1,8 @@
 import json
-from commons import get_model, transform_image
 import os
 import onnxruntime
 
+from commons import transform_image
 
 model_path = os.path.join('models', 'MedNet.onnx')
 ort_session = onnxruntime.InferenceSession(model_path)
@@ -11,6 +11,7 @@ imagenet_class_index = json.load(open('imagenet_class_index.json'))
 
 def to_numpy(tensor):
     return tensor.detach().cpu().numpy() if tensor.requires_grad else tensor.cpu().numpy()
+
 
 def get_prediction(image_bytes):
     try:

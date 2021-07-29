@@ -1,12 +1,15 @@
-import os
-from flask import Flask, render_template, request, redirect
-from inference import get_prediction
-import shutil
 import glob
+import os
+import shutil
+
+from flask import Flask, render_template, request, redirect
+
+from inference import get_prediction
 
 app = Flask(__name__)
 UPLOAD_FOLDER = 'static/uploads/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 
 def read_file(file):
     img_bytes = file.read()
@@ -17,9 +20,11 @@ def read_file(file):
     file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     return class_name, class_id, filename
 
+
 @app.route('/', methods=["GET", 'POST'])
 def home_page():
     return render_template('index.html')
+
 
 @app.route('/files', methods=['GET', 'POST'])
 def upload_folder():
@@ -39,6 +44,7 @@ def upload_folder():
             result.append({'class_name': class_name, 'class_id': class_id, 'filename': filename})
         return render_template('result.html', data=result)
     return redirect('/')
+
 
 if __name__ == '__main__':
     if os.path.isdir(UPLOAD_FOLDER):

@@ -3,19 +3,19 @@
 {% block h1 %}Télécharger vos images (JPEG, JPG){% endblock %}
 {% block content %}
 <form class="form-signin" method=post enctype=multipart/form-data>
-  <div class="text-center" style="padding-bottom: 1rem; padding-top: 2rem">
-  </div>
-  <div class="row">
-    <div class="col-lg-4"></div>
-    <div class="col-lg-4">
-      <div class="input-group">
-        <input type="file" name="files" class="form-control" id="inputfile" multiple>
-        <span class="input-group-btn">
+    <div class="text-center" style="padding-bottom: 1rem; padding-top: 2rem">
+    </div>
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <div class="input-group">
+                <input type="file" name="files" class="form-control" id="inputfile" multiple>
+                <span class="input-group-btn">
           <button class="btn btn-primary btn-block" type="submit" formaction="/files">Upload</button>
         </span>
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
 </form>
 
 {% endblock %}
@@ -23,20 +23,20 @@
 
 {% block scripts %}
 <script type="text/javascript">
-  $('#inputfile').bind('change', function () {
-    let fileSize = this.files[0].size / 1024 / 1024; // this gives in MB
-    if (fileSize > 1) {
-      $("#inputfile").val(null);
-      alert('file is too big. images more than 1MB are not allowed')
-      return
-    }
+    $('#inputfile').bind('change', function () {
+        let fileSize = this.files[0].size / 1024 / 1024; // this gives in MB
+        if (fileSize > 1) {
+            $("#inputfile").val(null);
+            alert('file is too big. images more than 1MB are not allowed')
+            return
+        }
 
-    let ext = $('#inputfile').val().split('.').pop().toLowerCase();
-    if ($.inArray(ext, ['jpg', 'jpeg']) == -1) {
-      $("#inputfile").val(null);
-      alert('only jpeg/jpg files are allowed!');
-    }
-  });
+        let ext = $('#inputfile').val().split('.').pop().toLowerCase();
+        if ($.inArray(ext, ['jpg', 'jpeg']) == -1) {
+            $("#inputfile").val(null);
+            alert('only jpeg/jpg files are allowed!');
+        }
+    });
 </script>
 
 {% endblock %}
