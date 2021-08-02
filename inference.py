@@ -4,7 +4,7 @@ import onnxruntime
 
 from commons import transform_image
 
-model_path = os.path.join('models', 'MedNet.onnx')
+model_path = os.path.join('models', 'last_model.onnx')
 ort_session = onnxruntime.InferenceSession(model_path)
 imagenet_class_index = json.load(open('imagenet_class_index.json'))
 

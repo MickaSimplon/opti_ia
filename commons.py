@@ -7,7 +7,7 @@ from PIL import Image
 
 def get_model():
     # Preprocessing: load the ONNX model
-    model_path = os.path.join('models', 'MedNet.onnx')
+    model_path = os.path.join('models', 'last_model.onnx')
     model = onnx.load(model_path)
     # Check the model
     try:
